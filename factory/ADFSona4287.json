@@ -1,0 +1,9 @@
+{
+	"name": "ADFSona4287",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5190fed7-96eb-4a07-a9c5-5c6ac5f3f541",
+		"tenantId": "163a3304-3139-41c2-b2bf-bdd920139b9a"
+	}
+}
