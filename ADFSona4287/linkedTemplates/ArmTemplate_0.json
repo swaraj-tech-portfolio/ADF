@@ -610,7 +610,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "fs1input"
+						"fileName": "*",
+						"container": "fs1output"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
