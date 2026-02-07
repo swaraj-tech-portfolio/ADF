@@ -20,6 +20,9 @@
 		"AzureBlobStorage5_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorageSS1_connectionString": {
+			"value": ""
+		},
 		"AzureBlobStorage_partition_connectionString": {
 			"value": ""
 		},
@@ -33,9 +36,6 @@
 			"value": ""
 		},
 		"SqlServer1_Linkedservices_password": {
-			"value": ""
-		},
-		"AzureBlobStorageSS1_connectionString": {
 			"value": ""
 		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
