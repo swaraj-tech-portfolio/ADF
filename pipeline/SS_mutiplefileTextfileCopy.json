@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -106,7 +107,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DSmutiplefile",
+									"referenceName": "DSoutput",
 									"type": "DatasetReference"
 								}
 							]

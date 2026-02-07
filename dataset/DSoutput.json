@@ -1,0 +1,22 @@
+{
+	"name": "DSoutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageSS1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "fs1output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
