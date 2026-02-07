@@ -1,0 +1,44 @@
+{
+	"name": "SS_DS_SRC_Text",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageSS1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "product_cost.txt",
+				"container": "newinput"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ProductID",
+				"type": "String"
+			},
+			{
+				"name": "LastTransactionDate",
+				"type": "String"
+			},
+			{
+				"name": "TotalQuantity",
+				"type": "String"
+			},
+			{
+				"name": "TotalCost",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			}
+		]
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"name": "SS_DS_Sink_Text",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageSS1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "newoutput"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
