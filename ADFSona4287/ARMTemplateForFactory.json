@@ -589,7 +589,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "DSmutiplefile",
+											"referenceName": "DSoutput",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -605,7 +605,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DSmutiplefile')]"
+				"[concat(variables('factoryId'), '/datasets/DSmutiplefile')]",
+				"[concat(variables('factoryId'), '/datasets/DSoutput')]"
 			]
 		},
 		{
@@ -1166,6 +1167,33 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "*",
+						"container": "fs1output"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageSS1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DSoutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorageSS1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
 						"container": "fs1output"
 					},
 					"columnDelimiter": ",",
