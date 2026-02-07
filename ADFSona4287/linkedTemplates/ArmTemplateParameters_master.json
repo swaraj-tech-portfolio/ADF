@@ -1,0 +1,84 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADFSona4287"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage3_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage4_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage5_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage_partition_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase3_sp_password": {
+			"value": ""
+		},
+		"SqlServer1_Linkedservices_password": {
+			"value": ""
+		},
+		"AzureBlobStorageSS1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sqlsona4287.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "dbrisk"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "sqlsona4287"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"value": "sqlsona4287.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"value": "dbrisk"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"value": "sqlsona4287"
+		},
+		"AzureSqlDatabase3_sp_properties_typeProperties_server": {
+			"value": "sqlsona4287.database.windows.net"
+		},
+		"AzureSqlDatabase3_sp_properties_typeProperties_database": {
+			"value": "dbrisk"
+		},
+		"AzureSqlDatabase3_sp_properties_typeProperties_userName": {
+			"value": "sqlsona4287"
+		},
+		"SqlServer1_Linkedservices_properties_typeProperties_server": {
+			"value": "sqlsona4287"
+		},
+		"SqlServer1_Linkedservices_properties_typeProperties_database": {
+			"value": "dbrisk"
+		},
+		"SqlServer1_Linkedservices_properties_typeProperties_userName": {
+			"value": "sqlsona4287"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
