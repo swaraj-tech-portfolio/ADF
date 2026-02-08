@@ -65,13 +65,7 @@
 							"outputs": [
 								{
 									"referenceName": "DSoutput",
-									"type": "DatasetReference",
-									"parameters": {
-										"FileName": {
-											"value": "@concat(item(),'.csv')",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
