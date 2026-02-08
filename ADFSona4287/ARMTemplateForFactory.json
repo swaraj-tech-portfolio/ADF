@@ -280,7 +280,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"FileName": {
-													"value": "@concat(item(),'.csv')",
+													"value": "1",
 													"type": "Expression"
 												}
 											}
