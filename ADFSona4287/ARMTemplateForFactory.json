@@ -177,7 +177,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"FileName": {
-													"value": "@concat(item(),'.csv')",
+													"value": "@concat(variables('TableList'),'.csv')",
 													"type": "Expression"
 												}
 											}
