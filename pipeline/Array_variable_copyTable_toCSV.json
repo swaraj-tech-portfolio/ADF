@@ -65,7 +65,13 @@
 							"outputs": [
 								{
 									"referenceName": "DSoutput",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": {
+											"value": "1",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
