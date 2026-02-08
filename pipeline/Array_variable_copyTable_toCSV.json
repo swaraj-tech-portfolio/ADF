@@ -64,14 +64,8 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DSoutput",
-									"type": "DatasetReference",
-									"parameters": {
-										"FileName": {
-											"value": "1",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "blob1",
+									"type": "DatasetReference"
 								}
 							]
 						}
