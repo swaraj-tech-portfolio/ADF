@@ -549,6 +549,7 @@
 											"storeSettings": {
 												"type": "AzureBlobStorageReadSettings",
 												"recursive": true,
+												"wildcardFolderPath": "input",
 												"wildcardFileName": {
 													"value": "@item().name",
 													"type": "Expression"
@@ -1166,8 +1167,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "*",
-						"container": "fs1output"
+						"folderPath": "input",
+						"container": "feloopfile"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -1194,7 +1195,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "fs1output"
+						"folderPath": "output",
+						"container": "feloopfile"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",

@@ -26,7 +26,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "fs1output"
+						"folderPath": "output",
+						"container": "feloopfile"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -801,6 +802,7 @@
 											"storeSettings": {
 												"type": "AzureBlobStorageReadSettings",
 												"recursive": true,
+												"wildcardFolderPath": "input",
 												"wildcardFileName": {
 													"value": "@item().name",
 													"type": "Expression"

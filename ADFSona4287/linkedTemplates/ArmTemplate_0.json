@@ -610,8 +610,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "*",
-						"container": "fs1output"
+						"folderPath": "input",
+						"container": "feloopfile"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
