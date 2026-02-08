@@ -276,14 +276,9 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "DSoutput",
+											"referenceName": "blob1",
 											"type": "DatasetReference",
-											"parameters": {
-												"FileName": {
-													"value": "1",
-													"type": "Expression"
-												}
-											}
+											"parameters": {}
 										}
 									]
 								}
@@ -307,7 +302,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTableVariableArray')]",
-				"[concat(variables('factoryId'), '/datasets/DSoutput')]"
+				"[concat(variables('factoryId'), '/datasets/blob1')]"
 			]
 		},
 		{
@@ -1983,6 +1978,34 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageSS1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/blob1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "input",
+						"container": "feloopfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
 			]
 		},
 		{
