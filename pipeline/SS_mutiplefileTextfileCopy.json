@@ -109,7 +109,13 @@
 							"outputs": [
 								{
 									"referenceName": "DSoutput",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": {
+											"value": "@concat(item(),'.csv')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
