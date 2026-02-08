@@ -1,5 +1,5 @@
 {
-	"name": "Array_variable_copyTable_toCSV",
+	"name": "Array_variable_Expression_DynamicDataset_copyTable_toCSV_copy",
 	"properties": {
 		"activities": [
 			{
@@ -29,7 +29,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "@concat('select * from ',item())",
+										"value": "@item()",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -83,8 +83,8 @@
 			"TableList": {
 				"type": "Array",
 				"defaultValue": [
-					"employeeT",
-					"employee"
+					"select * from employeeT",
+					"select * from employee"
 				]
 			}
 		},
