@@ -83,8 +83,8 @@
 			"TableList": {
 				"type": "Array",
 				"defaultValue": [
-					"employeeT",
-					"employee"
+					"select * from employeeT",
+					"select * from employee"
 				]
 			}
 		},
