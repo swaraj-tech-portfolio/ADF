@@ -13,6 +13,233 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText3",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable4",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "alterRow1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          emp_id as integer,",
+						"          name as string,",
+						"          salary as integer,",
+						"          loc as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source1 alterRow(upsertIf(1==1)) ~> alterRow1",
+						"alterRow1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          employee_id as integer,",
+						"          FirstName as string,",
+						"          salary as integer,",
+						"          location as string",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:false,",
+						"     updateable:false,",
+						"     upsertable:true,",
+						"     keys:['employee_id'],",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          employee_id = emp_id,",
+						"          FirstName = name,",
+						"          salary,",
+						"          location = loc",
+						"     )) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow2')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText4",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText5",
+								"type": "DatasetReference"
+							},
+							"name": "Target1"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText6",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText7",
+								"type": "DatasetReference"
+							},
+							"name": "sink2"
+						}
+					],
+					"transformations": [
+						{
+							"name": "derivedColumn1source"
+						},
+						{
+							"name": "derivedColumn2target"
+						},
+						{
+							"name": "exists1"
+						},
+						{
+							"name": "derivedColumn1"
+						},
+						{
+							"name": "select1"
+						},
+						{
+							"name": "exists2"
+						},
+						{
+							"name": "exists3"
+						},
+						{
+							"name": "derivedColumn2"
+						},
+						{
+							"name": "alterRow1"
+						},
+						{
+							"name": "select2"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          user_id as string,",
+						"          {subscription } as string,",
+						"          price as string,",
+						"          {location } as string,",
+						"          pincode as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source(output(",
+						"          user_id as string,",
+						"          {subscription } as string,",
+						"          price as string,",
+						"          {location } as string,",
+						"          pincode as string,",
+						"          isactive as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Target1",
+						"source1 derive(hash = md5(user_id,{subscription },price,{location },pincode)) ~> derivedColumn1source",
+						"Target1 derive(hash = md5(user_id,{subscription },price,{location },pincode)) ~> derivedColumn2target",
+						"derivedColumn1source, derivedColumn2target exists(derivedColumn1source@hash == derivedColumn2target@hash,",
+						"     negate:true,",
+						"     broadcast: 'auto')~> exists1",
+						"exists1 derive(is_active = 1) ~> derivedColumn1",
+						"derivedColumn1 select(mapColumn(",
+						"          user_id,",
+						"          {subscription },",
+						"          price,",
+						"          {location },",
+						"          pincode,",
+						"          is_active",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"derivedColumn2target, derivedColumn1source exists(Target1@user_id == source1@user_id,",
+						"     negate:false,",
+						"     broadcast: 'auto')~> exists2",
+						"exists2, derivedColumn1source exists(derivedColumn2target@hash == derivedColumn1source@hash,",
+						"     negate:true,",
+						"     broadcast: 'auto')~> exists3",
+						"exists3 derive(isactive = 0) ~> derivedColumn2",
+						"derivedColumn2 alterRow(updateIf(true())) ~> alterRow1",
+						"alterRow1 select(mapColumn(",
+						"          user_id,",
+						"          {subscription },",
+						"          price,",
+						"          {location },",
+						"          pincode,",
+						"          isactive",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select2",
+						"select1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          user_id as string,",
+						"          {subscription } as string,",
+						"          price as string,",
+						"          {location } as string,",
+						"          pincode as string,",
+						"          isactive as string",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('hash', 1)) ~> sink1",
+						"select2 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          user_id as string,",
+						"          {subscription } as string,",
+						"          price as string,",
+						"          {location } as string,",
+						"          pincode as string,",
+						"          isactive as string",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('hash', 1)) ~> sink2"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/partitionDF')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -197,7 +424,9 @@
 				"annotations": [],
 				"lastPublishTime": "2026-01-26T19:27:33Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SCD type 2')]",
@@ -244,7 +473,9 @@
 				"annotations": [],
 				"lastPublishTime": "2026-01-27T18:51:05Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dataflow2')]"
+			]
 		}
 	]
 }
